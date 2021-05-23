@@ -1,3 +1,5 @@
+import { fakeListings } from './../fake-data';
+import { Listing } from './../types';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListingsPageComponent implements OnInit {
 
+  listings: Listing[] = [];
   constructor() { }
 
   ngOnInit(): void {
+    this.listings = fakeListings;
   }
 
 }
