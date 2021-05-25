@@ -1,5 +1,5 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-new-listing-page',
   templateUrl: './new-listing-page.component.html',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewListingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  onSubmit(): void{
+    alert('Creating new Listing...');
+    this.router.navigateByUrl('/my-listings');
+  }
 }
