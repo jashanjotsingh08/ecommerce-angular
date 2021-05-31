@@ -5,24 +5,21 @@ import { Listing } from '../types';
 @Component({
   selector: 'app-listing-data-form',
   templateUrl: './listing-data-form.component.html',
-  styleUrls: ['./listing-data-form.component.css']
+  styleUrls: ['./listing-data-form.component.css'],
 })
 export class ListingDataFormComponent implements OnInit {
-
   @Input() buttonText;
   @Input() currentName = '';
   @Input() currentDescription = '';
   @Input() currentPrice = 0;
 
-  name : string='';
-  description: string='';
+  name: string = '';
+  description: string = '';
   price: number = 0;
 
   @Output() onSubmit = new EventEmitter<Listing>();
 
-  constructor(
-    private router: Router,
-  ) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.name = this.currentName;
@@ -30,14 +27,14 @@ export class ListingDataFormComponent implements OnInit {
     this.price = this.currentPrice;
   }
 
-  onButtonClicked(): void{
+  onButtonClicked(): void {
     this.onSubmit.emit({
-      id:null,
+      id: null,
       name: this.name,
       description: this.description,
       price: Number(this.price),
-    })
+      views: 0,
+    });
     this.router.navigateByUrl('/my-listings');
   }
-
 }
